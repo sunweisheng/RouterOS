@@ -6,7 +6,7 @@
 #获取IP列表
 wget http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest
 #创建一个以时间命名的新文件并在其中插入位置指示命令：IP功能下的防火墙模块中的地址列表,然后在插入清空CN列表的明白
-echo "/ip firewall address-list \r\nremove [/ip firewall address-list find list=CN]" > address-list_`date +"%Y%m%d"`.rsc
+echo -e "/ip firewall address-list \n remove [/ip firewall address-list find list=CN]" > address-list_`date +"%Y%m%d"`.rsc
 #找到我们需要的IP并插入到新创建的文件中
 grep "|CN|ipv4" delegated-apnic-latest | awk -F'|' '{print "add address="$4"/"32-int(log(int($5))/log(2))" disabled=no list=CN"}' >> address-list_`date +"%Y%m%d"`.rsc
 #删除原始下载的文件
