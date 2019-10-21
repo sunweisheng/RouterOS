@@ -52,7 +52,9 @@ IPsec Secret是预设的共享密钥，需要设置才行，点击OK后查看是
 ## 创建路由规则
 
 在左侧点击IP->Routes->点击加号：  
-![Alt text](http://static.bluersw.com/images/RouterOS/RouterOS-L2TP-Client/RouterOS-L2TP-Client-12.png)  
+![Alt text](http://static.bluersw.com/images/RouterOS/RouterOS-L2TP-Client/RouterOS-L2TP-Client-12.png) 
+
+注：要确保默认路由的distance级别低于新增加路由的distance，比如默认路由是5，此处distance设为1
 
 * Gateway：{L2TP链接的名字}：将符合条件的信息路由到L2TP链接的内网地址这里实际的IP是10.10.10.5（在上面可以找到对应的截图）
 * Routing Mark:vpn：被标记的vpn的信息包都是符合条件的，都会被路由到L2TP链接的隧道。
